@@ -1,0 +1,33 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ac-view/ac-view.html">
+<link rel="import" href="./ukelele-fretboard.html">
+<dom-module id="ac-ukelele">
+    <template>
+        <style>
+        </style>
+        <ukelele-fretboard acLedGroup name='ukelele'>
+        </ukelele-fretboard>
+    </template>
+    <script>
+        class ACUkelele extends ACView {
+            static get is() { return 'ac-ukelele'; }
+            static get properties() {return {}}
+            constructor() {
+                super();
+            }
+            ___acV_handleMIDIEvent (e) {
+                this.shadowRoot.querySelector('ukelele-fretboard').___acV_onMIDIEvent(e);
+            }
+            ready() {
+                super.ready() ;
+                this.___acV_setName('ukelele') ; 
+                this.___acV_setDefaultReverb(30);
+                this.___acV_setDefaultViewPitch(69) ; 
+                this.___acV_canDisplayNotes(true) ; 
+                this.___acV_canDisplayLeftHanded(true) ; 
+                this.___acV_canRotate(true) ; 
+            }
+        }
+        customElements.define('ac-ukelele', ACUkelele);
+    </script>
+</dom-module>
