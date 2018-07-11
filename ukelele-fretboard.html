@@ -826,14 +826,28 @@
                 }
             }
             ___acV_editMIDI_IN_event(e) {
-                if(e.channel === 15 ) 
+                // use guitar with capo con 5
+                if(e.channel === 15 ){ 
                     e.channel = 0 ; 
-                if(e.channel === 14 ) 
+                }
+                if(e.channel === 14 ) {
                     e.channel = 1 ; 
-                if(e.channel === 13 ) 
+                }
+                if(e.channel === 13 ) {
                     e.channel = 2 ; 
-                if(e.channel === 12 ) 
+                }
+                if(e.channel === 12 || e.channel === 3) {
                     e.channel = 3 ; 
+                    e.midiNote += 12  ; 
+                }
+                if(e.channel === 11 || e.channel === 4) {
+                    e.midiNote += 12 ; 
+                    e.channel = 2 ; 
+                }
+                if(e.channel === 10 || e.channel === 5) {
+                    e.midiNote +=24 ; 
+                    e.channel = 0 ; 
+                }
                 return e ;
             }
             ___acV_mapMIDIEventToAcLedState(channel,midiNote){
